@@ -43,17 +43,39 @@
 
 
 
-function calculateFinalScore(obj) {
-    if(typeof info!== "object"){
-        return  "Invalid Input";
-    }
-    let finalScore = info.testScore + info.schoolGrade;
+// function calculateFinalScore(obj) {
+//     if(typeof info!== "object"){
+//         return  "Invalid Input";
+//     }
+//     let finalScore = info.testScore + info.schoolGrade;
 
-    if(info.isFFamily){
-        finalScore = finalScore + 20;
+//     if(info.isFFamily){
+//         finalScore = finalScore + 20;
+//     }
+//     if(finalScore >= 80){
+//         return true;
+//     }
+//     return false;
+// }
+
+
+
+function  waitingTime(waitingTimes , serialNumber) {
+    if(!Array.isArray(waitingTimes) || typeof serialNumber !== "number"){
+        return "Invalid Input";
     }
-    if(finalScore >= 80){
-        return true;
+    let sum = 0;
+
+    for(let i = 0; i < waitingTimes.length; i++){
+        // sum = sum + i; why it's not working?
+        sum += waitingTimes[i];
     }
-    return false;
+
+    let avg = sum / waitingTimes.length;
+    avg = Math.round(avg);
+
+    let remainingPerson = serialNumber - 1 - waitingTimes.length;
+
+    return avg*remainingPerson;
 }
+
